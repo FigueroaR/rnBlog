@@ -6,7 +6,7 @@ import { Feather } from '@expo/vector-icons'
 
 const IndexScreen = () => {
   // we are destructuring our state and function
-  const {state, addBlogPost} = useContext(Context);
+  const {state, addBlogPost, deleteBlogPost} = useContext(Context);
 
   return (
     <View>
@@ -14,11 +14,11 @@ const IndexScreen = () => {
       <Button title="Add post" onPress={addBlogPost}/>
       <FlatList 
         data={state}
-        keyExtractor={(blogPost) => blogPost.tittle}  
+        keyExtractor={blogPost => blogPost.title}  
         renderItem={ ({item}) => {
           return(<View style={styles.row}>
             <Text style={styles.title}>{item.title} - {item.id}</Text>
-            <TouchableOpacity onPress={() => console.log(item.id)}>
+            <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
               <Feather style={styles.icon} name="trash" /> 
             </TouchableOpacity>
           </View>)
