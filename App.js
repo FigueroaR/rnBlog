@@ -18,6 +18,8 @@ const navigator = createStackNavigator(
 
 const App = createAppContainer(navigator);
 
+// the app comp is the child for the provider
+// now we have context for all screen inside the app
 export default () => {
   return (
     <BlogProvider>
