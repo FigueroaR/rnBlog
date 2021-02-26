@@ -1,4 +1,3 @@
-import React, {useReducer} from 'react';
 import createDataContext from './createDataContext'
 
 
@@ -11,9 +10,11 @@ const blogreducer = (state, action) => {
   }
 }
 
-const addBlogPost = () => {
-  dispatch({type: 'add_blogpost', })
+const addBlogPost = dispatch => {
+  return () => {
+    dispatch({type: 'add_blogpost', })
+  }
 }
 
-//destructuring what we receive
+//destructuring what we receive     // pass out reducer , actions to disp, and initState
 export const {Context, Provider} = createDataContext(blogreducer, {addBlogPost}, [])
