@@ -4,7 +4,9 @@ import { FlatList } from 'react-native-gesture-handler';
 import {Context} from '../context/BlogContext';
 import { Feather } from '@expo/vector-icons'
 
-const IndexScreen = () => {
+//props.naviagtion
+const IndexScreen = ({navigation}) => {
+  //console.log(props)
   // we are destructuring our state and function
   const {state, addBlogPost, deleteBlogPost} = useContext(Context);
 
@@ -16,12 +18,16 @@ const IndexScreen = () => {
         data={state}
         keyExtractor={blogPost => blogPost.title}  
         renderItem={ ({item}) => {
-          return(<View style={styles.row}>
+          return(
+          <TouchableOpacity onPress={() => navigation.navigate('Show', {id: item.id})}>
+            <View style={styles.row}>
             <Text style={styles.title}>{item.title} - {item.id}</Text>
             <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
               <Feather style={styles.icon} name="trash" /> 
             </TouchableOpacity>
-          </View>)
+          </View>
+          </TouchableOpacity>
+          )
         } }
       />
     </View>
