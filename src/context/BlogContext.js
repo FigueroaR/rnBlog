@@ -24,13 +24,20 @@ const addBlogPost = dispatch => {
   }
 }
 
+const editBlogPost = dispatch => {
+  return (id, title, content) => {
+    dispatch({type: 'edit_blogpost', 
+              patyload: {id, title, content} })
+  }
+}
+
 const deleteBlogPost = dispatch => {
   return (id) => {
     dispatch({type: 'delete_blogpost', payload: id})
   }
 }
 
-//destructuring what we receive     // pass out reducer , actions to disp, and initState
+//destructuring what we receive     // pass our reducer , actions to disp, and initState
 export const {Context, Provider} = createDataContext(blogreducer, 
-                                                    {addBlogPost, deleteBlogPost}, 
+                                                    {addBlogPost, deleteBlogPost, editBlogPost}, 
                                                     [{title: 'TEST POST', content: 'CONTENT', id: 1}])
