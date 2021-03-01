@@ -8,8 +8,8 @@ const ShowScreen = ( {navigation} ) => {
     const {state} = useContext(Context);
 
     const blogPost = state.find((blogPost) => blogPost.id ===navigation.getParam('id'))
-    console.log(blogPost)
-    // with ge extra params with added to our navigation
+    //console.log(blogPost)
+    // with get extra params with added to our navigation
     //console.log(navigation.getParam('id'))
     return <View>
         <Text>{blogPost.title}</Text>
@@ -22,7 +22,7 @@ ShowScreen.navigationOptions= ({navigation}) => {
     return {
         //Property
         headerRight: () => (
-          <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Edit', {id: navigation.getParam('id')})}>
             <EvilIcons name="pencil" size={35} />
           </TouchableOpacity>
         ),

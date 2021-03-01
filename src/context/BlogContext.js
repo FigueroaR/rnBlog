@@ -31,4 +31,6 @@ const deleteBlogPost = dispatch => {
 }
 
 //destructuring what we receive     // pass out reducer , actions to disp, and initState
-export const {Context, Provider} = createDataContext(blogreducer, {addBlogPost, deleteBlogPost}, [])
+export const {Context, Provider} = createDataContext(blogreducer, 
+                                                    {addBlogPost, deleteBlogPost}, 
+                                                    [{title: 'TEST POST', content: 'CONTENT', id: 1}])
