@@ -11,7 +11,20 @@ const IndexScreen = ({navigation}) => {
   const {state, getBlogPosts, deleteBlogPost} = useContext(Context);
 
   useEffect(() => {
+    // gwt posts after initial comp render
     getBlogPosts()
+
+    // after we focus on the index screen, 
+    // (reload the index), we call all blog posts
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogPosts()
+    })
+
+    return () => {
+      // we remove  our listener after we are done with index screen
+      // preventing memory leaks
+      listener.remove()
+    }
   }, [])
 
   return (
