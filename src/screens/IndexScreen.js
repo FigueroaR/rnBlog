@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity  } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import {Context} from '../context/BlogContext';
@@ -8,7 +8,11 @@ import { Feather } from '@expo/vector-icons'
 const IndexScreen = ({navigation}) => {
   //console.log(props)
   // we are destructuring our state and function
-  const {state, addBlogPost, deleteBlogPost} = useContext(Context);
+  const {state, getBlogPosts, deleteBlogPost} = useContext(Context);
+
+  useEffect(() => {
+    getBlogPosts()
+  }, [])
 
   return (
     <View>
