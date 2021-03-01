@@ -30,6 +30,14 @@ const BlogPostForm = ({onSubmit, initialValues}) => {
     )
 }
 
+// defaultProps is automatic property
+BlogPostForm.defaultProps = {
+    initialValues: {
+        title: '',
+        content: ''
+    }
+}
+
 const styles= StyleSheet.create({
     input: {
         fontSize: 18,
