@@ -16,7 +16,11 @@ const CreateScreen = ( {navigation} ) => {
             
             />
             <Button 
-                onPress={() => addBlogPost(title, content)}
+                // we navigate after API work is done
+                onPress={() => {addBlogPost(title, content, () => {
+                    navigation.navigate('Index')
+                })
+                                }}
                 title="Add Blog Post"/>
         </View>
     )
