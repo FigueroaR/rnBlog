@@ -3,7 +3,7 @@ import {View , Text, StyleSheet, TextInput, Button} from 'react-native'
 
 
 // Our resusbale form component 
-const BlogPostForm = () => {
+const BlogPostForm = ({onSubmit}) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
 
@@ -11,14 +11,19 @@ const BlogPostForm = () => {
     return (
         <View>
             <Text style={styles.label}>Enter Title:</Text>
-            <TextInput style={styles.input} value={title} onChangeText={setTitle}/>
+            <TextInput 
+                style={styles.input} 
+                value={title} 
+                onChangeText={text => setTitle(text)}/>
             <Text style={styles.label}>Enter Content:</Text>
-            <TextInput style={styles.input} value={content} onChangeText={setContent} 
-            
+            <TextInput 
+                style={styles.input} 
+                value={content} 
+                onChangeText={ text => setContent(text)}
             />
             <Button 
                 // we navigate after API work is done
-                                
+                onPress={() => onSubmit(title, content)}
                 title="Save Blog Post"
             />
         </View>
